@@ -1,5 +1,5 @@
 {
-  "name": "nativetest",
+  "name": "aze-m.com_blog_reader",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/html-elements": "^0.2.2",
     "expo": "~47.0.7",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",

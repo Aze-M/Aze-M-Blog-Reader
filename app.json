@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "NativeTest",
-    "slug": "NativeTest",
+    "name": "Aze-M Blog Reader",
+    "slug": "Aze-M Blog Reader",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
