@@ -1,15 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { Component, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View, ViewBase, Button, Pressable } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, ViewBase, Button, Pressable, Image } from 'react-native';
 
 const mainCLR = '#5C1868';
 const mainContentCLR = '#1A1A1A';
-const neutralBgCLR = '#fff';
+const neutralBgCLR = '#FFF';
 const neutralTextBgCLR = '#404040';
 const mainTextCLR = 'black';
 const postTextCLR = 'white';
 let buttonBgCLR = '#5C1868';
-let buttonBgCLRPressed = '#5D1969';
+let buttonBgCLRPressed = '#B82FD0';
 
 const postStyle = StyleSheet.create({
   container: {
@@ -59,6 +59,11 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     backgroundColor: neutralBgCLR,
+    loadingimage: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   },
   footer: {
     height: 80,
@@ -69,7 +74,6 @@ const styles = StyleSheet.create({
   footerButton: {
     height: 60,
     paddingHorizontal: 20,
-    backgroundColor: buttonBgCLR,
     borderRadius: 10,
     width: 200,
     justifyContent: 'center',
@@ -110,11 +114,19 @@ class PostContainer extends Component {
   }
 
   render() {
-    return (
-      <ScrollView style={styles.body}>
-        {this.props.posts}
-      </ScrollView>
-    )
+    if (this.props.posts.length > 0) {
+      return (
+        <ScrollView style={styles.body}>
+          {this.props.posts}
+        </ScrollView>
+      )
+    } else {
+      return (
+        <View style={styles.body.loadingimage}>
+          <Image source={require('./assets/loading-gif.gif')} />
+        </View>
+      )
+    }
   }
 }
 
@@ -167,7 +179,7 @@ export default function App() {
       </View>
       <PostContainer gen={genNewPosts} posts={posts} />
       <View style={styles.footer}>
-        <Pressable style={({pressed}) => [{backgroundColor: pressed ? buttonBgCLRPressed : buttonBgCLR},styles.footerButton]} onPress={() => genNewPosts()}><Text style={styles.baseText.white} color={postTextCLR}>Refresh</Text></Pressable>
+        <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? buttonBgCLRPressed : buttonBgCLR }, styles.footerButton]} onPress={() => genNewPosts()}><Text style={styles.baseText.white} color={postTextCLR}>Refresh</Text></Pressable>
       </View>
     </View>
   );
