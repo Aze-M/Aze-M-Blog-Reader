@@ -18,11 +18,10 @@ const postStyle = StyleSheet.create({
   },
   title: {
     paddingLeft: 16,
-    height: 48,
+    minHeight: 48,
     fontSize: 36,
     color: postTextCLR,
     backgroundColor: mainCLR,
-    overflow: 'hidden',
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
@@ -102,7 +101,6 @@ function parseHTMLtoEXPO(html) {
   let step_1 = html.replace(RGXbrp, "\n")
 
   let step_2 = step_1.replace(RGXAny, "")
-
 
   return step_2
 }
