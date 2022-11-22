@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { Component } from 'react';
-import { ScrollView, StyleSheet, Text, View, ViewBase, Button } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, ViewBase, Button, Pressable } from 'react-native';
 
 const blogPost = {
-  title: 'Wow, I am a Test!',
+  title: 'Wow, I am a Test! WowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWowWow',
   content: 'This is so cool wow, all the cool stuff like this can be read.',
   date: '2022-11-22'
 }
@@ -16,7 +16,8 @@ const postStyle = StyleSheet.create({
     height: 48,
     fontSize: 42,
     color: 'white',
-    backgroundColor: '#5C1868'
+    backgroundColor: '#5C1868',
+    overflow: 'hidden'
   },
   content: {
     fontSize: 30,
@@ -63,7 +64,7 @@ export default function App() {
         <Post title={blogPost.title} content={blogPost.content} date={blogPost.date}></Post>
       </ScrollView>
       <View style={styles.footer}>
-        <Button title="Refresh" color={'#5C1868'}/>
+        <Pressable style={styles.footerButton}><Text style={styles.baseText}>Refresh</Text></Pressable>
       </View>
     </View>
   );
@@ -89,6 +90,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  footerButton: {
+    height: 60,
+    paddingHorizontal: 'auto',
+    backgroundColor: '#5C1868',
   },
   baseText: {
     fontSize: 32,
